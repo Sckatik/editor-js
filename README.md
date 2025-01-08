@@ -85,3 +85,11 @@ class Post extends Model
 $post = Post::find(1);
 echo $post->body;
 ```
+
+## Upload Image
+The Spatie/Image package is used to upload images.
+you need to install the extension in php - https://www.php.net/manual/en/book.image.php
+
+## For Laravel 11
+Сhange the path for uploading images from disk=>local to public in the moonshine-editor-js config in the toolSettings.image.disk block if you have a standard configuration filesystems.php not unfaithful. 
+If there are any changes, then it's up to you.

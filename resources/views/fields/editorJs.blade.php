@@ -1,13 +1,12 @@
 <div class="box">
     <x-moonshine::form.textarea
-        :attributes="$element->attributes()->merge([
-        'name' => $element->name(),
-        'data-type'=>'editor-js',
-        'id' => $element->name(),
-        'class' => 'hidden'
-    ])->except('x-bind:id')"
-
-    >{!! $element->value() ?? '' !!}</x-moonshine::form.textarea>
+            :attributes="$attributes->merge([
+            'name' => $attributes['name'],
+            'data-type'=>'editor-js',
+            'id' => $attributes['name'],
+            'class' => 'hidden',
+        ])->except('x-bind:id')"
+    >{!! $value ?? '' !!}</x-moonshine::form.textarea>
     <div id="editorjs"></div>
 </div>
 <script>

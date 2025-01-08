@@ -6,7 +6,7 @@
         "build": "vite build"
     },
     "devDependencies": {
-        "@editorjs/editorjs": "^2.29.1",
+        "@editorjs/editorjs": "^2.30.7",
         "@editorjs/embed": "^2.7.2",
         "@pawritharya/editorjs-image-tool-delete": "^1.0.66",
         "@tailwindcss/aspect-ratio": "^0.4",

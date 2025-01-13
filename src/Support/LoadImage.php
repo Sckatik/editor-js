@@ -35,21 +35,8 @@ final class LoadImage
             config('moonshine-editor-js.toolSettings.image.path'),
             config('moonshine-editor-js.toolSettings.image.disk')
         );
-        if (config('moonshine-editor-js.toolSettings.image.disk') !== 'local') {
-            $tempPath = $file->store(
-                config('moonshine-editor-js.toolSettings.image.path'),
-                'local'
-            );
-
-            self::applyAlterations(Storage::disk('local')->path($tempPath));
-            $thumbnails = self::applyThumbnails($tempPath);
-
-            self::deleteFiles(true, Storage::disk('local')->path($tempPath));
-            Storage::disk('local')->delete($tempPath);
-        } else {
             self::applyAlterations(Storage::disk(config('moonshine-editor-js.toolSettings.image.disk'))->path($path));
             $thumbnails = self::applyThumbnails($path);
-        }
 
         return response()->json([
             'success' => 1,
@@ -92,7 +79,8 @@ final class LoadImage
 
     public static function deleteImages($path): JsonResponse
     {
-        if (File::exists(public_path($path))) {
+        $getStoragePath = mb_strstr($path, 'storage');
+        if (File::exists(public_path($getStoragePath))) {
             self::deleteFiles(true, public_path($path));
             self::deleteFiles(false, public_path($path));
             return response()->json(['message' => 'Картинка успешно удалена!']);
@@ -191,14 +179,9 @@ final class LoadImage
 
                 Storage::disk(config('moonshine-editor-js.toolSettings.image.disk'))->copy($path, $newThumbnailPath);
 
-                if (config('moonshine-editor-js.toolSettings.image.disk') !== 'local') {
-                    Storage::disk('local')->copy($path, $newThumbnailPath);
-                    $newPath = Storage::disk('local')->path($newThumbnailPath);
-                } else {
-                    $newPath = Storage::disk(config('moonshine-editor-js.toolSettings.image.disk'))->path(
-                        $newThumbnailPath
-                    );
-                }
+                $newPath = Storage::disk(config('moonshine-editor-js.toolSettings.image.disk'))->path(
+                    $newThumbnailPath
+                );
 
                 self::applyAlterations($newPath, $setting);
 

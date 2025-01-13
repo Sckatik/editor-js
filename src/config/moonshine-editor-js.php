@@ -33,7 +33,7 @@ return [
         'image' => [
             'activated' => true,
             'shortcut' => 'CMD+SHIFT+I',
-            'path' => 'public/images',
+            'path' => 'images',
             'disk' => 'local',
             'alterations' => [
                 'resize' => [

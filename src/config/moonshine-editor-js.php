@@ -34,7 +34,7 @@ return [
             'activated' => true,
             'shortcut' => 'CMD+SHIFT+I',
             'path' => 'images',
-            'disk' => 'local',
+            'disk' => 'public',
             'alterations' => [
                 'resize' => [
                     'width' => false, // integer

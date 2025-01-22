@@ -115,4 +115,7 @@ To add your component, you need the following:
 ```
 Using the js css connection method is at the discretion of the developer
 
+3. You also need to add a blade file to /resources/views/vendor/moonshine-editorjs/blocks with data processing from your component
+   for output to the frontend or via the api.
+
 

@@ -93,3 +93,26 @@ you need to install the extension in php - https://www.php.net/manual/en/book.im
 ## For Laravel 11
 Сhange the path for uploading images from disk=>local to public in the moonshine-editor-js config in the toolSettings.image.disk block if you have a standard configuration filesystems.php not unfaithful. 
 If there are any changes, then it's up to you.
+
+## Сustomization adding your own component
+
+To add your component, you need the following:
+
+1. Publish assets with the command -
+```
+   php artisan vendor:publish --tag="moonshine-editorjs-assets"
+```
+2. In the file - /resources/views/vendor/moonshine-editorjs/fields/editorJs.blade.php there is an example of creating your own component
+   , you must either uncomment it or change it for yourself. You can also use the vite and create your own class, and
+   you also need to connect your own js and css. But you need to keep in mind that connecting your component takes place in this way.
+```
+    editorJsConf.custom = {
+        customImage: {
+            class: SimpleImage,
+            inlineToolbar: true
+        }
+   };
+```
+Using the js css connection method is at the discretion of the developer
+
+
